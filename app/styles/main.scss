@@ -31,27 +31,31 @@ $hf-text-primary:   #0C0C0C;
   margin-right: 5px;
   margin-top: 10px;
   margin-bottom: 10px;
-  text-color: #FFFFFF;
 
   .banner {
-    @include alpha-attribute('background-color', rgba($hf-brand-primary, 0.5), white);
+    //@include alpha-attribute('background-color', rgba($hf-brand-primary, 0.5), white);
     background-color: $hf-brand-primary;
-    font-family: sans-serif;
+    color: #FFFFFF;
+    font-family: Helvetica, sans-serif;
+    font-size: 30px;
     height: 105px;
     width: auto;
-    padding-top: 40;
-    padding-bottom: 40;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin-top: 0px;
     text-align: center;
-    background-image: "/images/bg_neighborhood_street.png";
+    background-image: url("/images/bg_neighborhood_street.png");
   }
 
   .header {
     background-color: #000000;
+    color: #FFFFFF;
     font-weight: bolder;
     text-align: left;
     padding-top: 14px;
     padding-bottom: 14px;
     padding-left: 20px;
+    margin: 0px;
     height: 45px;
     border-top: 2px;
     border-color: $hf-brand-primary;
