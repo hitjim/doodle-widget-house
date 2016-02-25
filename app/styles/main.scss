@@ -55,10 +55,10 @@ $hf-text-primary:   #0C0C0C;
     padding-top: 14px;
     padding-bottom: 14px;
     padding-left: 20px;
-    margin: 0px;
+    margin: 0;
     height: 45px;
-    border-top: 2px;
-    border-color: $hf-brand-primary;
+    border-top: 2px solid $hf-brand-primary;
+    border-bottom-width: 0px;
     width: auto;
   }
 }
