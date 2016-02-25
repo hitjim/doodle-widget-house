@@ -8,6 +8,61 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 // Old, default glyphicon path
 //$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
+// BEGIN JIM'S STYLES
+// May or may not have stolen this from SASS tutorials
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+
+$hf-brand-primary:  #44A540;
+$hf-background:     #FFFFFF;
+$hf-button:         #F2F2F2;
+$hf-text-primary:   #0C0C0C;
+
+[d-tile] {
+  background-color: $hf-background;
+  max-width: 680px;
+  min-width: 340px;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-color: #FFFFFF;
+
+  .banner {
+    @include alpha-attribute('background-color', rgba($hf-brand-primary, 0.5), white);
+    background-color: $hf-brand-primary;
+    font-family: sans-serif;
+    height: 105px;
+    width: auto;
+    padding-top: 40;
+    padding-bottom: 40;
+    text-align: center;
+    background-image: "/images/bg_neighborhood_street.png";
+  }
+
+  .header {
+    background-color: #000000;
+    font-weight: bolder;
+    text-align: left;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    padding-left: 20px;
+    height: 45px;
+    border-top: 2px;
+    border-color: $hf-brand-primary;
+    width: auto;
+  }
+}
+
+
+
+// END JIM'S STYLES
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
