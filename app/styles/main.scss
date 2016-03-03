@@ -9,7 +9,8 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 //$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 
 // BEGIN JIM'S STYLES
-// May or may not have stolen this from SASS tutorials
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
 @mixin alpha-attribute($attribute, $color, $background) {
   $percent: alpha($color) * 100%;
   $opaque: opacify($color, 1);
@@ -18,10 +19,12 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
   #{$attribute}: $color;
 }
 
-$hf-brand-primary:  #44A540;
-$hf-background:     #FFFFFF;
-$hf-button:         #F2F2F2;
-$hf-text-primary:   #0C0C0C;
+$hf-brand-primary:    #44A540;
+$hf-background:       #FFFFFF;
+$hf-button-text:      #F2F2F2;
+$hf-button-disabled:  #ACACAC;
+$hf-text-primary:     #0C0C0C;
+$hf-border-color:     #CCCCCC;
 
 [d-tile] {
   background-color: $hf-background;
@@ -33,18 +36,25 @@ $hf-text-primary:   #0C0C0C;
   margin-bottom: 10px;
 
   .banner {
-    //@include alpha-attribute('background-color', rgba($hf-brand-primary, 0.5), white);
-    background-color: $hf-brand-primary;
-    color: #FFFFFF;
-    font-family: Helvetica, sans-serif;
-    font-size: 30px;
-    height: 105px;
     width: auto;
-    padding-top: 40px;
-    padding-bottom: 40px;
-    margin-top: 0px;
-    text-align: center;
-    background-image: url("/images/bg_neighborhood_street.png");
+
+    .background {
+      background-image: url('/images/bg_neighborhood_street.png');
+      background-position: 50% 50%, center;
+    }
+
+    .content {
+      color: #FFFFFF;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      font-family: 'Helvetica Neue', HelveticaNeue, 'open sans', arial, sans-serif;
+      font-size: 30px;
+      height: 105px;
+      margin-top: 0px;
+      text-align: center;
+      line-height: 30px;
+      @include alpha-attribute('background-color', rgba($hf-brand-primary, 0.5), white);
+    }
   }
 
   .header {
@@ -60,10 +70,50 @@ $hf-text-primary:   #0C0C0C;
     border-top: 2px solid $hf-brand-primary;
     border-bottom-width: 0px;
     width: auto;
+
+    i {
+      color: $hf-brand-primary;
+    }
+  }
+
+  .shadow {
+    box-shadow: inset 0 20px 20px -10px $hf-border-color;
+    //margin-top: 20px;
+    height: 20px;
+  }
+
+  .footer {
+    border-top: 1px solid $hf-border-color;
+    width: auto;
+    padding: 0;
+
+    .buttons {
+      float: right;
+      padding-top: 10px;
+      padding-right: 20px;
+      padding-bottom: 20px;
+
+      button {
+        padding-top: 9px;
+        padding-bottom: 9px;
+      }
+
+      .commit {
+        background-color: $hf-brand-primary;
+        border-color: $hf-border-color;
+        color: $hf-button-text;
+        font-weight: bolder;
+        padding-right: 40px;
+        padding-left: 40px;
+      }
+
+      .clear {
+        background-color: $hf-button-disabled;
+        color: $hf-button-text;
+      }
+    }
   }
 }
-
-
 
 // END JIM'S STYLES
 

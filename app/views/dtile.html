@@ -1,4 +1,16 @@
 <div>
-  <div class="header">Find the home you are looking for</div>
-  <div class="banner">Describe Your Perfect <str>{{message}}</str> Home</div>
+  <div class="header"><i class="fa fa-minus fa-rotate-90"></i>{{tile.headerText}}</div>
+  <div class="banner">
+    <div class="background">
+      <div class="content" ng-bind-html="tile.bannerText"></div>
+    </div>
+  </div>
+  <div class="shadow"></div>
+  <div ng-if="tile.buttons" class="footer" >
+    <div class="buttons" ng-repeat="button in tile.buttons">
+      <button type="button" ng-class="button.class" ng-click="button.action()" aria-label="button.text">
+        <span>{{button.text}} </span><span ng-bind-html="button.icon"><span>
+      </button>
+    </div>
+  </div>
 </div>

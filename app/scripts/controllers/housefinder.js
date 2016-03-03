@@ -12,22 +12,41 @@ angular.module('houseFinderApp')
     var controller = this;
     var promise;
 
-    controller.buildLocation = function(data) {
-      return data.city + ', ' + data.region;
-    }
-
-    $scope.fetchData = function() {
+    controller.fetchData = function() {
       promise = locationService.ipapi.get();
       promise.then(function(response) {
-        $scope.userLocation = controller.buildLocation(response.data);
+        controller.buildDataModel(response.data);
       }, function(response) {
-        controller.userLocation = {
+        controller.defaultLocation = {
           city: 'Earth',
           region: 'MW'
         };
-        $scope.userLocation = controller.buildLocation(controller.userLocation);
+        controller.buildDataModel(controller.defaultLocation);
       });
+
     };
 
-    $scope.fetchData();
+    controller.buildDataModel = function(data) {
+      console.log('DATA in buildDataModel is', angular.copy(data));
+      $scope.bannerOptions = {
+        bannerText: 'Describe your Perfect <strong>' + data.city + ', ' +
+            data.region + '</strong> Home',
+        headerText: 'Find the home you are looking for',
+        buttons: [{
+          text: 'Find Your Home',
+          icon: '<i class="fa fa-angle-right"></i>',
+          class: 'commit btn btn-default',
+          action: function() {window.alert('Imagine that I just found you a house!');}
+        }, {
+          text: 'Clear Selection',
+          icon: '<i class="fa fa-times"></i>',
+          class: 'clear btn btn-default',
+          action: function() {window.alert('Imagine I just cleared all selections');}
+        }]
+      };
+    };
+
+    $timeout(function() {
+      controller.fetchData();
+    });
   });
