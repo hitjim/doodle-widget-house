@@ -8,11 +8,24 @@
  */
 angular.module('houseFinderApp')
   .directive('dButtonRow', function () {
+    var defaultOptions = {
+      headerText: null,
+      headerSubtext: null,
+      headerSubtextHtml: null,
+      buttons: [],
+    };
+
     return {
-      template: '<div></div>',
-      restrict: 'E',
-      link: function postLink(scope, element, attrs) {
-        element.text('this is the dButtonRow directive');
+      scope: {
+        options: '&dButtonRow',
+        checked: '=',
+        selectedDropDown: '='
+      },
+      templateUrl: 'views/dbuttonrow.html',
+      link: function (scope) {
+        scope.$watch('options()', function() {
+          scope.buttonRow = angular.element.extend({}, defaultOptions, scope.options());
+        });
       }
     };
   });

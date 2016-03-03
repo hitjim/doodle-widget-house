@@ -21,16 +21,17 @@ angular.module('houseFinderApp')
           city: 'Earth',
           region: 'MW'
         };
+
         controller.buildDataModel(controller.defaultLocation);
       });
 
     };
 
     controller.buildDataModel = function(data) {
-      console.log('DATA in buildDataModel is', angular.copy(data));
-      $scope.bannerOptions = {
-        bannerText: 'Describe your Perfect <strong>' + data.city + ', ' +
-            data.region + '</strong> Home',
+      var userLocation = data.city+ ', ' + data.region;
+      $scope.tileOptions = {
+        bannerText: 'Describe your Perfect <strong>' + userLocation +
+            '</strong> Home',
         headerText: 'Find the home you are looking for',
         buttons: [{
           text: 'Find Your Home',
@@ -42,7 +43,38 @@ angular.module('houseFinderApp')
           icon: '<i class="fa fa-times"></i>',
           class: 'clear btn btn-default',
           action: function() {window.alert('Imagine I just cleared all selections');}
-        }]
+        }],
+        contentTemplate: 'views/housefindercontent.html'
+      };
+
+      $scope.propertyType = {
+        options: {
+          headerText: 'Pick a Property Type',
+          headerSubtext: '25 Homes for Sale · ' + userLocation,
+          headerSubtextHtml: null,
+          buttons: [{
+            text: 'House',
+            icon: '<i class="fa fa-home"></i>',
+            type: 'checkbox ',
+            checked: false
+          }, {
+            text: 'Condo',
+            icon: '<i class="fa fa-bank"></i>',
+            type: 'checkbox',
+            checked: false
+          }, {
+            text: 'Apartment',
+            icon: '<i class="fa fa-building"></i>',
+            type: 'checkbox',
+            checked: false
+          }, {
+            text: 'Townhome',
+            icon: '<i class="fa fa-bank"></i>',
+            type: 'checkbox',
+            checked: false
+          }]
+        },
+        checked: []
       };
     };
 

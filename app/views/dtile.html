@@ -1,11 +1,14 @@
-<div>
+<div class="d-tile">
   <div class="header"><i class="fa fa-minus fa-rotate-90"></i>{{tile.headerText}}</div>
+
   <div class="banner">
     <div class="background">
       <div class="content" ng-bind-html="tile.bannerText"></div>
     </div>
   </div>
   <div class="shadow"></div>
+
+  <div ng-if="tile.contentTemplate" ng-include="tile.contentTemplate"></div>
   <div ng-if="tile.buttons" class="footer" >
     <div class="buttons" ng-repeat="button in tile.buttons">
       <button type="button" ng-class="button.class" ng-click="button.action()" aria-label="button.text">

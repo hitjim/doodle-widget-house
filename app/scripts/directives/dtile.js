@@ -11,7 +11,8 @@ angular.module('houseFinderApp')
     var defaultOptions = {
       headerText: false,
       bannerText: '',
-      buttons: [{text: 'OK', icon: '<i class="fa fa-angle-right"></i>'}]
+      buttons: [{text: 'OK', icon: '<i class="fa fa-angle-right"></i>'}],
+      contentTemplate: null
     };
 
     return {
@@ -22,7 +23,6 @@ angular.module('houseFinderApp')
       link: function (scope) {
         scope.$watch('options()', function() {
           scope.tile = angular.element.extend({}, defaultOptions, scope.options());
-          console.log('scope.tile is', scope.tile);
         });
       }
     };
