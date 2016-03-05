@@ -29,8 +29,9 @@ angular.module('houseFinderApp')
 
     controller.buildDataModel = function(data) {
       var userLocation = data.city+ ', ' + data.region;
+
       $scope.tileOptions = {
-        bannerText: 'Describe your Perfect <strong>' + userLocation +
+        bannerText: 'Describe Your Perfect <strong>' + userLocation +
             '</strong> Home',
         headerText: 'Find the home you are looking for',
         buttons: [{
@@ -52,26 +53,31 @@ angular.module('houseFinderApp')
           headerText: 'Pick a Property Type',
           headerSubtext: '25 Homes for Sale · ' + userLocation,
           headerSubtextHtml: null,
+          headerSubtextClass: 'subtext default',
           buttons: [{
-            text: 'House',
-            icon: '<i class="fa fa-home"></i>',
-            type: 'checkbox ',
-            checked: false
-          }, {
-            text: 'Condo',
-            icon: '<i class="fa fa-bank"></i>',
+            textHtml: '<i class="fa fa-home"></i>House',
             type: 'checkbox',
-            checked: false
+            class: 'checkbox btn btn-default',
+            checked: false,
+            action: function(button) {button.checked = !button.checked;}
           }, {
-            text: 'Apartment',
-            icon: '<i class="fa fa-building"></i>',
+            textHtml: '<i class="fa fa-bank"></i>Condo',
             type: 'checkbox',
-            checked: false
+            class: 'checkbox btn btn-default',
+            checked: false,
+            action: function(button) {button.checked = !button.checked;}
           }, {
-            text: 'Townhome',
-            icon: '<i class="fa fa-bank"></i>',
+            textHtml: '<i class="fa fa-building"></i>Apartment',
             type: 'checkbox',
-            checked: false
+            class: 'checkbox btn btn-default',
+            checked: false,
+            action: function(button) {button.checked = !button.checked;}
+          }, {
+            textHtml: '<i class="fa fa-bank"></i>Townhome',
+            type: 'checkbox',
+            class: 'checkbox btn btn-default',
+            checked: false,
+            action: function(button) {button.checked = !button.checked;}
           }]
         },
         checked: []

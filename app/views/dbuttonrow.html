@@ -1,12 +1,21 @@
 <div class="d-button-row">
   <div class="header">
     <span>{{buttonRow.headerText}}</span>
-    <span ng-if="!buttonRow.headerSubtextHtml" class="subtext">{{buttonRow.headerSubtext}}</span>
-    <span ng-if="buttonRow.headerSubtextHtml" class="subtext" ng-bind-html="buttonRow.headerSubtextHtml"></span>
+    <span ng-switch="!!buttonRow.headerSubtextHtml.toString()">
+      <span ng-switch-when="false" ng-class="buttonRow.headerSubtextClass">{{buttonRow.headerSubtext}}</span>
+      <span ng-switch-when="true" ng-class="buttonRow.headerSubtextClass" ng-bind-html="buttonRow.headerSubtextHtml"></span>
+    </span>
   </div>
-  <div class="buttons" ng-repeat="button in buttonRow.buttons">
-    <button type="button.type" ng-class="button.type" ng-click="button.action()" aria-label="button.text">
-      <span ng-bind-html="button.icon"></span><span> {{button.text}}</span>
-    </button>
+  <div "button-container">
+    <span class="buttons" ng-repeat="button in buttonRow.buttons">
+      <button type="button.type" ng-class="button.class" aria-label="button.text" ng-click="button.action(button)">
+        <span ng-switch="button.type">
+          <span ng-switch-when="checkbox">
+            <span ng-bind-html="button.textHtml"></span>
+            <span d-fa-checkbox="button.checked"></span>
+          </span>
+        </span>
+      </button>
+    </span>
   </div>
 </div>

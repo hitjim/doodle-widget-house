@@ -8,8 +8,9 @@
   </div>
   <div class="shadow"></div>
 
-  <div ng-if="tile.contentTemplate" ng-include="tile.contentTemplate"></div>
-  <div ng-if="tile.buttons" class="footer" >
+  <div class="content" ng-if="tile.contentTemplate" ng-include="tile.contentTemplate"></div>
+  
+  <div ng-if="tile.buttons" class="footer">
     <div class="buttons" ng-repeat="button in tile.buttons">
       <button type="button" ng-class="button.class" ng-click="button.action()" aria-label="button.text">
         <span>{{button.text}} </span><span ng-bind-html="button.icon"><span>
