@@ -130,9 +130,8 @@ $hf-border-color:     #CCCCCC;
 
     .buttons {
       font-size: 14px;
-      display: inline-block;
-      text-align: justify;
       background-color: transparent;
+      display: inline-block;
       margin: 0;
 
       button {
@@ -142,7 +141,6 @@ $hf-border-color:     #CCCCCC;
         margin: 5px 10px 15px 0;
         min-height: 38px;
         min-width: 148px;
-        width: auto;
 
         &:hover {
           background-color: $hf-button-disabled;

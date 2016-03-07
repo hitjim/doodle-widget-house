@@ -84,6 +84,10 @@ angular.module('houseFinderApp')
       };
     };
 
+    // $scope.mustHaves = {
+    //   options: {}
+    // };
+
     $timeout(function() {
       controller.fetchData();
     });
