@@ -12,6 +12,11 @@ angular.module('houseFinderApp')
     var controller = this;
     var promise;
 
+    var showMustHavesHtml = 'Want more Advanced Filters? ' +
+      '<span ng-click="toggleAdvanced"><strong>Click Here</strong></span>';
+    var hideMustHavesHtml = '<span ng-click="toggleAdvanced">' +
+      '<strong>Hide Advanced Filters</strong></span>';
+
     controller.fetchData = function() {
       promise = locationService.ipapi.get();
       promise.then(function(response) {
@@ -56,24 +61,28 @@ angular.module('houseFinderApp')
           headerSubtextClass: 'subtext default',
           buttons: [{
             textHtml: '<i class="fa fa-home"></i>House',
+            propertyType: 'house',
             type: 'checkbox',
             class: 'checkbox btn btn-default',
             checked: false,
             action: function(button) {button.checked = !button.checked;}
           }, {
             textHtml: '<i class="fa fa-bank"></i>Condo',
+            propertyType: 'condo',
             type: 'checkbox',
             class: 'checkbox btn btn-default',
             checked: false,
             action: function(button) {button.checked = !button.checked;}
           }, {
             textHtml: '<i class="fa fa-building"></i>Apartment',
+            propertyType: 'apartment',
             type: 'checkbox',
             class: 'checkbox btn btn-default',
             checked: false,
             action: function(button) {button.checked = !button.checked;}
           }, {
             textHtml: '<i class="fa fa-bank"></i>Townhome',
+            propertyType: 'townhome',
             type: 'checkbox',
             class: 'checkbox btn btn-default',
             checked: false,
@@ -84,9 +93,24 @@ angular.module('houseFinderApp')
       };
     };
 
-    // $scope.mustHaves = {
-    //   options: {}
-    // };
+    $scope.showMustHaves = false;
+
+    $scope.mustHaves = {
+      options: {
+        headerText: 'Must Haves',
+        type: 'dropdown',
+        headerSubtextHtml: $scope.showMustHaves ?
+            showMustHavesHtml : hideMustHavesHtml,
+        headerSubtextClass: 'subtext filters',
+        buttons: [{
+          text: 'Bedrooms',
+          type: 'dropdown',
+          class: ''
+        }]
+      }
+    };
+
+
 
     $timeout(function() {
       controller.fetchData();

@@ -6,15 +6,12 @@
       <span ng-switch-when="true" ng-class="buttonRow.headerSubtextClass" ng-bind-html="buttonRow.headerSubtextHtml"></span>
     </span>
   </div>
+
   <div class="row">
     <div class="buttons col-xs-4 col-sm-3" ng-repeat="button in buttonRow.buttons">
       <button type="button.type" ng-class="button.class" aria-label="button.text" ng-click="button.action(button)">
-        <span ng-switch="button.type">
-          <span ng-switch-when="checkbox">
-            <span ng-bind-html="button.textHtml"></span>
-            <span d-fa-checkbox="button.checked"></span>
-          </span>
-        </span>
+        <span ng-bind-html="button.textHtml"></span>
+        <span d-fa-checkbox="button.checked"></span>
       </button>
     </div>
   </div>

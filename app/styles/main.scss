@@ -178,6 +178,9 @@ $hf-border-color:     #CCCCCC;
 
             .fa-check-square-o {
               color: $hf-brand-primary;
+              margin-top: 1px;
+              margin-left: -1px;
+              font-size: 22px;
             }
           }
         }
